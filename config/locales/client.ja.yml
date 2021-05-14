@@ -1,0 +1,5 @@
+ja:
+  js:
+    search_user:
+      button: '検索'
+      toggle_filter: '検索欄表示/非表示'

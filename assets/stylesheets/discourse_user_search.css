@@ -1,0 +1,19 @@
+label {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.search-select {
+  border: 1px solid #8d8d8d;
+}
+
+.search-result {
+  margin-bottom: 50px;
+}
+
+.instructions {
+  color: #8d8d8d;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  font-size: .8706em;
+}

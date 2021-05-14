@@ -1,0 +1,78 @@
+<h1>
+  テスト
+</h1>
+<div style="padding-bottom: 300px">
+  {{d-button label="search_user.toggle_filter" action="toggle_filter"}}
+  {{#if showFilter}}
+    <form id="search-form" class="form-vertical">
+      <div class="control-group">
+        <label class="control-label">
+          学生/社会人
+        </label>
+        <select name="state" class="search-select" onchange={{action "filter"}}>
+          <option value="">指定なし</option>
+          <option value="学士">学士</option>
+          <option value="修士">修士</option>
+          <option value="博士">博士</option>
+          <option value="社会人">社会人</option>
+        </select>
+      </div>
+      <div class="control-group">
+        <label class="control-label">学年・社会人経験年数</label>
+        <input type="number" name="grade_year" min="-1" onchange={{action "filter"}}/>
+        <div class="instructions">未入力または-1で指定なし</div>
+      </div>
+      <div class="control-group">
+        <label class="control-label">文・理・文理</label>
+        <select name="undergraduate" class="search-select" onchange={{action "filter"}} >
+          <option value="">指定なし</option>
+          <option value="文系">文系</option>
+          <option value="理系">理系</option>
+          <option value="文理系">文理系</option>
+        </select>
+      </div>
+      <div class="control-group">
+        <label class="control-label">学校名・卒業学校名</label>
+        <input type="text" name="university" onchange={{action "filter"}}/>
+
+      </div>
+      <div class="control-group">
+        <label class="control-label">留浪人合計年数</label>
+        <select name="repeat_year" class="search-select" onchange={{action "filter"}} >
+          <option value="">指定なし</option>
+          <option value="現役">現役</option>
+          <option value="現役+1年">現役+1年</option>
+          <option value="現役+2年">現役+2年</option>
+          <option value="現役+3年">現役+3年以上</option>
+          <option value="非公開">非公開</option>
+        </select>
+        <div class="instructions">未入力または-1で指定なし</div>
+      </div>
+      <div class="control-group">
+        <label class="control-label">業界</label>
+        <input type="text" name="industry" onchange={{action "filter"}}/>
+      </div>
+      <div class="control-group">
+        <label class="control-label">性別</label>
+        <select name="gender" class="search-select" onchange={{action "filter"}}>
+          <option value="">指定なし</option>
+          <option value="男性">男性</option>
+          <option value="女性">女性</option>
+          <option value="非公開">非公開</option>
+        </select>
+
+      </div>
+
+    </form>
+    <div class='buttons'>
+      {{d-button label="search_user.button" action="filter"}}
+    </div>
+  {{/if}}
+
+  <div id="search-result">
+    {{#each filtered_users as |user|}}
+      {{user-info user=user}}
+    {{/each}}
+
+  </div>
+</div>
