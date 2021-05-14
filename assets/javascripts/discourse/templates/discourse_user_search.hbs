@@ -1,5 +1,5 @@
 <h1>
-  テスト
+  ユーザ検索
 </h1>
 <div style="padding-bottom: 300px">
   {{d-button label="search_user.toggle_filter" action="toggle_filter"}}
@@ -53,6 +53,10 @@
         <input type="text" name="industry" onchange={{action "filter"}}/>
       </div>
       <div class="control-group">
+        <label class="control-label">職種</label>
+        <input type="text" name="occupation" onchange={{action "filter"}}/>
+      </div>
+      <div class="control-group">
         <label class="control-label">性別</label>
         <select name="gender" class="search-select" onchange={{action "filter"}}>
           <option value="">指定なし</option>
@@ -68,11 +72,21 @@
       {{d-button label="search_user.button" action="filter"}}
     </div>
   {{/if}}
-
-  <div id="search-result">
+  <h2 style="margin-top: 30px">表示設定</h2>
+  <div id="display-setting-wrapper">
+    <label>学生/社会人<input type="checkbox" name="state" checked onchange={{action "toggle_display"}}></label>
+    <label>学年/社会人年数<input type="checkbox" name="grade_year" checked onchange={{action "toggle_display"}}></label>
+    <label>文/理/文理<input type="checkbox" name="undergraduate" checked onchange={{action "toggle_display"}}></label>
+    <label>在・卒業学校名<input type="checkbox" name="university" checked onchange={{action "toggle_display"}}></label>
+    <label>留浪合計回数<input type="checkbox" name="repeat_year" checked onchange={{action "toggle_display"}}></label>
+    <label>内定/就業業界<input type="checkbox" name="industry" checked onchange={{action "toggle_display"}}></label>
+    <label>内定/就業職種<input type="checkbox" name="occupation" checked onchange={{action "toggle_display"}}></label>
+    <label>性別<input type="checkbox" name="gender" checked onchange={{action "toggle_display"}}></label>
+  </div>
+  <h1 style="margin-top:30px">検索結果</h1>
+  <div id="search-result" class="search-result">
     {{#each filtered_users as |user|}}
-      {{user-info user=user}}
+      {{searched-user-info display_flag=display_flag user=user}}
     {{/each}}
-
   </div>
 </div>

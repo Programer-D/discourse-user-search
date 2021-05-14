@@ -4,10 +4,12 @@ label {
 }
 
 .search-select {
+  background: #3d4147;
   border: 1px solid #8d8d8d;
 }
 
 .search-result {
+  margin-top: 30px;
   margin-bottom: 50px;
 }
 
@@ -16,4 +18,9 @@ label {
   margin-top: 5px;
   margin-bottom: 10px;
   font-size: .8706em;
+}
+
+.search-detail {
+  display: block;
+  padding-right: 7px;
 }

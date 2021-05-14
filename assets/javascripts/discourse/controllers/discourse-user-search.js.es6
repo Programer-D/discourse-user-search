@@ -1,7 +1,28 @@
+let current_display_flag = {
+  'state': true,
+  'grade_year': true,
+  'undergraduate': true,
+  'university': true,
+  'repeat_year': true,
+  'industry': true,
+  'occupation': true,
+  'gender': true
+}
 export default Ember.Controller.extend({
   all_users: [],
   filtered_users: [],
   showFilter: true,
+  view_state: true,
+  display_flag: {
+    'state': true,
+    'grade_year': true,
+    'undergraduate': true,
+    'university': true,
+    'repeat_year': true,
+    'industry': true,
+    'occupation': true,
+    'gender': true
+  },
   actions: {
     filter: function () {
       const form_data = new FormData(document.getElementById('search-form'))
@@ -11,6 +32,7 @@ export default Ember.Controller.extend({
       const university = form_data.get('university')
       const repeat_year = form_data.get('repeat_year')
       const industry = form_data.get('industry')
+      const occupation = form_data.get('occupation')
       const gender = form_data.get('gender')
 
       this.set('filtered_users', this.all_users.filter(user => {
@@ -61,6 +83,13 @@ export default Ember.Controller.extend({
             check_flag_list.push(false);
           }
         }
+        if (occupation !== "") {
+          if (user.Occupation.indexOf(occupation) > -1) {
+            check_flag_list.push(true);
+          } else {
+            check_flag_list.push(false);
+          }
+        }
         if (gender !== "") {
           if (user.Gender === gender) {
             check_flag_list.push(true);
@@ -68,19 +97,21 @@ export default Ember.Controller.extend({
             check_flag_list.push(false);
           }
         }
-        console.log(check_flag_list)
-        console.log(check_flag_list.length > 0)
-        console.log(check_flag_list.every(flag => flag))
         return check_flag_list.length > 0 && check_flag_list.every(flag => flag)
       }));
-      console.log(...form_data.entries())
 
 
       return 'success'
     },
     toggle_filter: function (event) {
       this.set('showFilter', !this.showFilter);
-    }
+
+    },
+    toggle_display: function (event) {
+      name = event.target.name;
+      current_display_flag[name] = event.target.checked
+      this.set('display_flag', Object.assign({}, current_display_flag))
+    },
   },
   init: function () {
     this._super();
@@ -91,7 +122,6 @@ export default Ember.Controller.extend({
       // data: form_data
     })
       .done(function (data, textStatus, jqXHR) {
-        console.log(data['data']);
         ember_controller.set('all_users', data['data'])
         ember_controller.set('filtered_users', data['data'])
         return 'success'

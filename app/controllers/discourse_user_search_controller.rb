@@ -20,6 +20,7 @@ class DiscourseUserSearchController < ApplicationController
       user = User.find(user_data['UserID'])
       user_data['avatar_template'] = user.avatar_template
       user_data['username'] = user.username
+      user_data['GradeYear'] = user_data['GradeYear'].to_i
       next user_data
 
     end
