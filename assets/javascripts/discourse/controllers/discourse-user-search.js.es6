@@ -37,7 +37,7 @@ export default Ember.Controller.extend({
 
       this.set('filtered_users', this.all_users.filter(user => {
         if (state === "" && (grade_year === "" || parseInt(grade_year) === -1) && undergraduate === "" &&
-          university === "" && repeat_year === "" && industry === "" && gender === "") {
+          university === "" && repeat_year === "" && industry === "" && occupation === "" && gender === "") {
           return true
         }
         let check_flag_list = [];
