@@ -1,4 +1,5 @@
 let current_display_flag = {
+  'user_name':true,
   'state': true,
   'grade_year': true,
   'undergraduate': true,
@@ -14,6 +15,7 @@ export default Ember.Controller.extend({
   showFilter: true,
   view_state: true,
   display_flag: {
+    'user_name':true,
     'state': true,
     'grade_year': true,
     'undergraduate': true,
