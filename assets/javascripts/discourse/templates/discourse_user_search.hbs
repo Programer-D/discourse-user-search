@@ -5,6 +5,10 @@
   {{d-button label="search_user.toggle_filter" action="toggle_filter"}}
   {{#if showFilter}}
     <form id="search-form" class="form-vertical">
+    <div class="control-group">
+            <label class="control-label">アカウント名</label>
+            <input type="text" name="name" onchange={{action "filter"}}/>
+          </div>
       <div class="control-group">
         <label class="control-label">
           学生/社会人
