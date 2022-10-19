@@ -45,7 +45,7 @@ export default Ember.Controller.extend({
         }
         let check_flag_list = [];
           if (user_name !== "") {
-              if (user.UserName.indexOf(university) > -1) {
+              if (user.username.indexOf(university) > -1) {
                   check_flag_list.push(true);
               } else {
                   check_flag_list.push(false);
