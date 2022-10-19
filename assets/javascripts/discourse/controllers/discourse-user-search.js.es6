@@ -37,17 +37,14 @@ export default Ember.Controller.extend({
       const industry = form_data.get('industry')
       const occupation = form_data.get('occupation')
       const gender = form_data.get('gender')
-        console.log(user_name)
       this.set('filtered_users', this.all_users.filter(user => {
         if (user_name === "" && state === "" && (grade_year === "" || parseInt(grade_year) === -1) && undergraduate === "" &&
           university === "" && repeat_year === "" && industry === "" && occupation === "" && gender === "") {
           return true
         }
-        console.log(user);
-          console.log(user.username);
         let check_flag_list = [];
           if (user_name !== "") {
-              if (user.username.indexOf(university) > -1) {
+              if (user.username.indexOf(username) > -1) {
                   check_flag_list.push(true);
               } else {
                   check_flag_list.push(false);
