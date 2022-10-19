@@ -28,7 +28,7 @@ export default Ember.Controller.extend({
   actions: {
     filter: function () {
       const form_data = new FormData(document.getElementById('search-form'))
-      const name = form_data.get('name')
+      const user_name = form_data.get('user_name')
       const state = form_data.get('state')
       const grade_year = form_data.get('grade_year')
       const undergraduate = form_data.get('undergraduate')
@@ -39,13 +39,13 @@ export default Ember.Controller.extend({
       const gender = form_data.get('gender')
 
       this.set('filtered_users', this.all_users.filter(user => {
-        if (name === "" && state === "" && (grade_year === "" || parseInt(grade_year) === -1) && undergraduate === "" &&
+        if (user_name === "" && state === "" && (grade_year === "" || parseInt(grade_year) === -1) && undergraduate === "" &&
           university === "" && repeat_year === "" && industry === "" && occupation === "" && gender === "") {
           return true
         }
         let check_flag_list = [];
-          if (name !== "") {
-              if (user.name.indexOf(university) > -1) {
+          if (user_name !== "") {
+              if (user.UserName.indexOf(university) > -1) {
                   check_flag_list.push(true);
               } else {
                   check_flag_list.push(false);
