@@ -15,11 +15,18 @@ class DiscourseUserSearchController < ApplicationController
     result = dynamodb.scan(scan_condition)
 
     result = result.items
-    Rails.logger.info result
+    # user_ids = result.map {|information| information['UserID']}
+    #
+    # Rails.logger.info result
+    # user= User.find_by_sql("select * from users where id in (#{user_ids.join(',')})")
+    # data = result.map do |user_data|
+    #   user_data['avatar_template'] = user.avatar_template
+    #   user_data['username'] = user.username
+    #   user_data['GradeYear'] = user_data['GradeYear'].to_i
+    #   next user_data
+    #
+    # end
     data = result.map do |user_data|
-      user = User.find(user_data['UserID'])
-      user_data['avatar_template'] = user.avatar_template
-      user_data['username'] = user.username
       user_data['GradeYear'] = user_data['GradeYear'].to_i
       next user_data
 
