@@ -37,20 +37,13 @@ export default Ember.Controller.extend({
       const industry = form_data.get('industry')
       const occupation = form_data.get('occupation')
       const gender = form_data.get('gender')
-
-      if (user_name === "" && state === "" && (grade_year === "" || parseInt(grade_year) === -1) && undergraduate === "" &&
-          university === "" && repeat_year === "" && industry === "" && occupation === "" && gender === ""){
-        return this.set('filtered_users',[])
-        return 'not_search'
-      }
-
       this.set('filtered_users', this.all_users.filter(user => {
         if (user_name === "" && state === "" && (grade_year === "" || parseInt(grade_year) === -1) && undergraduate === "" &&
           university === "" && repeat_year === "" && industry === "" && occupation === "" && gender === "") {
           return true
         }
         let check_flag_list = [];
-        if (user_name !== "") {
+          if (user_name !== "") {
               if (user.username.indexOf(user_name) > -1) {
                   check_flag_list.push(true);
               } else {
@@ -113,7 +106,6 @@ export default Ember.Controller.extend({
             check_flag_list.push(false);
           }
         }
-
         return check_flag_list.length > 0 && check_flag_list.every(flag => flag)
       }));
 
@@ -122,6 +114,7 @@ export default Ember.Controller.extend({
     },
     toggle_filter: function (event) {
       this.set('showFilter', !this.showFilter);
+
     },
     toggle_display: function (event) {
       name = event.target.name;
@@ -139,7 +132,7 @@ export default Ember.Controller.extend({
     })
       .done(function (data, textStatus, jqXHR) {
         ember_controller.set('all_users', data['data'])
-        ember_controller.set('filtered_users', [])
+        ember_controller.set('filtered_users', data['data'])
         return 'success'
       })
       .fail(function (jqXHR, textStatus, errorThrown) {
