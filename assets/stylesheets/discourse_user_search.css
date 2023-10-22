@@ -24,3 +24,9 @@ label {
   display: block;
   padding-right: 7px;
 }
+
+.user-info {
+    display: inline-flex !important;
+    gap: 1em;
+    margin: 20px !important;
+}
