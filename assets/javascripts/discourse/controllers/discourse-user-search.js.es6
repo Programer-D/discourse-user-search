@@ -9,7 +9,7 @@ let current_display_flag = {
   'occupation': true,
   'gender': true
 }
-export default Ember.Controller.extend({
+export default Controller.extend({
   all_users: [],
   filtered_users: [],
   showFilter: true,
