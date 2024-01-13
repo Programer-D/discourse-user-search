@@ -13,7 +13,7 @@
   </div>
   <div class="title">{{@user.title}}</div>
   {{user-detail name="after-user-info" display_flag=display_flag user=user}}
-  {{#if has-block}}
+  {{#if (has-block)}}
     <div class="details">
       {{yield}}
     </div>
