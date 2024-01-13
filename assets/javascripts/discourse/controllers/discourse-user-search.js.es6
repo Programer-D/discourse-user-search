@@ -1,3 +1,4 @@
+import Controller from "@ember/controller";
 let current_display_flag = {
   'user_name':true,
   'state': true,
